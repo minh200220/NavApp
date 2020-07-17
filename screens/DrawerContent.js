@@ -1,5 +1,5 @@
 //import liraries
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
 import {
   Avatar,
@@ -10,19 +10,15 @@ import {
   Text,
   TouchableRipple,
   Switch,
+  useTheme,
 } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { DrawerItem, DrawerContentScrollView } from "@react-navigation/drawer";
 import { AuthContext } from "../components/context";
 
 export function DrawerContent(props) {
-  const [isDarkTheme, setDarkTheme] = useState(false);
-
-  const { signOut } = React.useContext(AuthContext);
-
-  const toggleTheme = () => {
-    setDarkTheme(!isDarkTheme);
-  };
+  const paperTheme = useTheme();
+  const { signOut, toggleTheme } = React.useContext(AuthContext);
 
   return (
     <View style={styles.drawerContent}>
@@ -115,7 +111,7 @@ export function DrawerContent(props) {
               <View style={styles.preference}>
                 <Text>Dark theme</Text>
                 <View pointerEvents="none">
-                  <Switch value={isDarkTheme} />
+                  <Switch value={paperTheme.dark} />
                 </View>
               </View>
             </TouchableRipple>

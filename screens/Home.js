@@ -1,12 +1,16 @@
 //import liraries
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button, StatusBar } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
-// create a component
 const Home = ({ navigation }) => {
+  const { colors } = useTheme();
+  const theme = useTheme();
+
   return (
     <View style={styles.container}>
-      <Text>Home screen</Text>
+      <StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} />
+      <Text style={{ color: colors.text }}>Home screen</Text>
       <Button title="About" onPress={() => navigation.navigate("About")} />
     </View>
   );
@@ -18,7 +22,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff",
   },
 });
 

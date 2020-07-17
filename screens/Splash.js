@@ -14,13 +14,13 @@ import { useTheme } from "@react-navigation/native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import logo from "../assets/logo.png";
 
-// create a component
 const Splash = ({ navigation }) => {
   const { colors } = useTheme();
+  const theme = useTheme();
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="#009387" barStyle="light-content" />
+      <StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} />
       <View style={styles.header}>
         <Animatable.Image
           animation="bounceIn"
@@ -29,7 +29,10 @@ const Splash = ({ navigation }) => {
           resizeMode="stretch"
         />
       </View>
-      <Animatable.View animation="fadeInUpBig" style={styles.footer}>
+      <Animatable.View
+        animation="fadeInUpBig"
+        style={[styles.footer, { backgroundColor: colors.background }]}
+      >
         <Text
           style={[
             styles.title,
@@ -57,7 +60,6 @@ const Splash = ({ navigation }) => {
   );
 };
 
-// define your styles
 const { height } = Dimensions.get("screen");
 const height_logo = height * 0.28;
 

@@ -16,7 +16,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 
 import { AuthContext } from "../components/context";
-// import Users from "../model/users";
+
 const Users = [
   {
     id: 1,
@@ -42,6 +42,9 @@ const Users = [
 ];
 
 const SignIn = ({ navigation }) => {
+  const { colors } = useTheme();
+  const theme = useTheme();
+
   const [data, setData] = React.useState({
     username: "",
     password: "",
@@ -131,26 +134,31 @@ const SignIn = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="#009387" barStyle="light-content" />
+      <StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} />
       <View style={styles.header}>
         <Text style={styles.text_header}>Welcome!</Text>
       </View>
-      <Animatable.View animation="fadeInUpBig" style={styles.footer}>
+      <Animatable.View
+        animation="fadeInUpBig"
+        style={[styles.footer, { backgroundColor: colors.background }]}
+      >
         {/* Username and password input */}
-        <Text style={styles.text_footer}>Username</Text>
+        <Text style={[styles.text_footer, { color: colors.text }]}>
+          Username
+        </Text>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color="#05375a" size={20} />
+          <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
             placeholder="Your Username"
             placeholderTextColor="#666666"
-            style={styles.textInput}
+            style={[styles.textInput, { color: colors.text }]}
             autoCapitalize="none"
             onChangeText={(val) => textInputChange(val)}
             onEndEditing={(e) => handleValidUser(e.nativeEvent.text)}
           />
           {data.check_textInputChange ? (
             <Animatable.View animation="bounceIn">
-              <Feather name="check-circle" color="green" size={20} />
+              <Feather name="check-circle" color={colors.text} size={20} />
             </Animatable.View>
           ) : null}
         </View>
@@ -163,21 +171,26 @@ const SignIn = ({ navigation }) => {
           </Animatable.View>
         )}
 
-        <Text style={[styles.text_footer, { marginTop: 35 }]}>Password</Text>
+        <Text
+          style={[styles.text_footer, { color: colors.text, marginTop: 35 }]}
+        >
+          Password
+        </Text>
         <View style={styles.action}>
-          <Feather name="lock" color="#05375a" size={20} />
+          <Feather name="lock" color={colors.text} size={20} />
           <TextInput
             placeholder="Your Password"
+            placeholderTextColor="#666666"
             secureTextEntry={data.secureTextEntry ? true : false}
-            style={styles.textInput}
+            style={[styles.textInput, { color: colors.text }]}
             autoCapitalize="none"
             onChangeText={(val) => handlePasswordChange(val)}
           />
           <TouchableOpacity onPress={updateSecureTextEntry}>
             {data.secureTextEntry ? (
-              <Feather name="eye-off" color="gray" size={20} />
+              <Feather name="eye-off" color={colors.text} size={20} />
             ) : (
-              <Feather name="eye" color="gray" size={20} />
+              <Feather name="eye" color={colors.text} size={20} />
             )}
           </TouchableOpacity>
         </View>
@@ -195,6 +208,7 @@ const SignIn = ({ navigation }) => {
             Forgot password?
           </Text>
         </TouchableOpacity>
+
         {/* Buttons */}
         <View style={styles.button}>
           <TouchableOpacity

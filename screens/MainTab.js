@@ -3,14 +3,16 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import Icon from "react-native-vector-icons/Ionicons";
 
-import HomeScreen from "./Home";
-import AboutScreen from "./About";
+import Home from "./Home";
+import About from "./About";
 import Explore from "./Explore";
 import Profile from "./Profile";
 
 const Tab = createMaterialBottomTabNavigator();
 const HomeStack = createStackNavigator();
 const AboutStack = createStackNavigator();
+const ProfileStack = createStackNavigator();
+const ExploreStack = createStackNavigator();
 
 const MainTab = () => {
   return (
@@ -39,7 +41,7 @@ const MainTab = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileStackScreen}
         options={{
           tabBarLabel: "Profile",
           tabBarColor: "#172a3a",
@@ -50,7 +52,7 @@ const MainTab = () => {
       />
       <Tab.Screen
         name="Explore"
-        component={Explore}
+        component={ExploreStackScreen}
         options={{
           tabBarLabel: "Explore",
           tabBarColor: "#004346",
@@ -80,7 +82,7 @@ const HomeStackScreen = ({ navigation }) => {
     >
       <HomeStack.Screen
         name="Home"
-        component={HomeScreen}
+        component={Home}
         options={{
           title: "Overview",
           headerLeft: () => (
@@ -114,7 +116,7 @@ const AboutStackScreen = ({ navigation }) => {
     >
       <AboutStack.Screen
         name="About"
-        component={AboutScreen}
+        component={About}
         options={{
           headerLeft: () => (
             <Icon.Button
@@ -129,5 +131,73 @@ const AboutStackScreen = ({ navigation }) => {
         }}
       />
     </AboutStack.Navigator>
+  );
+};
+
+const ProfileStackScreen = ({ navigation }) => {
+  return (
+    <ProfileStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#172a3a",
+        },
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
+    >
+      <ProfileStack.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          title: "Profile",
+          headerLeft: () => (
+            <Icon.Button
+              name="ios-menu"
+              size={25}
+              backgroundColor="#172a3a"
+              onPress={() => {
+                navigation.openDrawer();
+              }}
+            ></Icon.Button>
+          ),
+        }}
+      />
+    </ProfileStack.Navigator>
+  );
+};
+
+const ExploreStackScreen = ({ navigation }) => {
+  return (
+    <ExploreStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#004346",
+        },
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
+    >
+      <ExploreStack.Screen
+        name="Explore"
+        component={Explore}
+        options={{
+          title: "Explore",
+          headerLeft: () => (
+            <Icon.Button
+              name="ios-menu"
+              size={25}
+              backgroundColor="#004346"
+              onPress={() => {
+                navigation.openDrawer();
+              }}
+            ></Icon.Button>
+          ),
+        }}
+      />
+    </ExploreStack.Navigator>
   );
 };

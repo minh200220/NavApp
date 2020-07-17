@@ -1,8 +1,6 @@
-//import liraries
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
-// create a component
 const About = ({ navigation }) => {
   return (
     <View style={styles.container}>
@@ -21,7 +19,6 @@ const About = ({ navigation }) => {
   );
 };
 
-// define your styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -31,5 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-//make this component available to the app
 export default About;
