@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "App",
-    "slug": "App",
+    "slug": "DemoApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,14 +13,18 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.nqminh.demoapp",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.nqminh.demoapp",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "I publish this app because I want to learn react native"
   }
 }

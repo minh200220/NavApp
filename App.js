@@ -20,7 +20,7 @@ import Support from "./screens/Support";
 import Bookmark from "./screens/Bookmark";
 import Settings from "./screens/Settings";
 import RootStack from "./screens/RootStack";
-import { AuthContext } from "./components/context";
+import { AuthContext } from "./context/context";
 
 const Drawer = createDrawerNavigator();
 
@@ -154,9 +154,9 @@ export default function App() {
               drawerContent={(props) => <DrawerContent {...props} />}
             >
               <Drawer.Screen name="HomeDrawer" component={MainTab} />
-              <Drawer.Screen name="Support" component={Support} />
               <Drawer.Screen name="Settings" component={Settings} />
               <Drawer.Screen name="Bookmark" component={Bookmark} />
+              <Drawer.Screen name="Support" component={Support} />
             </Drawer.Navigator>
           )}
         </NavigationContainer>

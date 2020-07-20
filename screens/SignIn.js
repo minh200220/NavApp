@@ -15,7 +15,7 @@ import { useTheme } from "@react-navigation/native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 
-import { AuthContext } from "../components/context";
+import { AuthContext } from "../context/context";
 
 const Users = [
   {

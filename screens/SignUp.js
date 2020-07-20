@@ -1,11 +1,10 @@
 //import liraries
-import React, { Component } from "react";
+import React from "react";
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
-  Dimensions,
   TextInput,
   StatusBar,
   Platform,

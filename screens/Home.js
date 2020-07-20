@@ -16,7 +16,6 @@ const Home = ({ navigation }) => {
   );
 };
 
-// define your styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -25,5 +24,4 @@ const styles = StyleSheet.create({
   },
 });
 
-//make this component available to the app
 export default Home;
